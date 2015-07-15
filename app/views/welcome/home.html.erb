@@ -1,0 +1,79 @@
+<div class="container jumbotron">
+  <div class="col-xs-12 text-center">
+    <!-- <img src="images/wildlife-collage.jpg" style="width:128px;height:128px;"> -->
+    <%= image_tag("wildlife-logo.jpg", width: '128', height: '128', ) %>
+  <div class="col-xs-12 text-center">
+    <h2>Welcome to Wildlife Tracker</h2>
+  </div>
+
+
+  <div class="text-center">
+    <p>Select an option:</p>
+    <a id="species-header" href="javascript:toggleSpeciesHidden();"><h3>Species</h3></a>
+    <div id="species-menu" class="hidden">
+      <%= link_to "View All", "species/" %><br />
+      <form action="species/get">
+        <label>Select:</label>
+        <select name="species" id="sel-species">
+        <option value="" selected disabled>
+        <option value="1">Coyote</option>
+        <option value="2">Rattle Snake</option>
+        <option value="3">Stork</option>
+        </select>
+      </form>
+      <%= link_to "Add", "species/new" %><br />
+      <%= link_to "Search", "species/search" %><br />
+      <%= link_to "Delete", "species/delete" %>
+
+    </div>
+    <a id="sightings-header" href="javascript:toggleSightingsHidden();"><h3>Sightings</h3></a>
+    <div id="sightings-menu" class="hidden">
+      <%= link_to "Add", "sightings/new" %><br />
+      <%= link_to "View All", "sightings/index" %><br />
+      <%= link_to "By Date", "sightings/by_date" %><br />
+    </div>
+    <!-- <h3><%= link_to "Region", "regions/index" %></h3> -->
+    <a id="regions-header" href="javascript:toggleRegionsHidden();"><h3>Regions</h3></a>
+    <div id="regions-menu" class="hidden">
+      <%= link_to "Add", "regions/new" %><br />
+      <%= link_to "Search", "regions/search" %><br />
+      <%= link_to "View All", "regions/index" %><br />
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleSpeciesHidden() {
+    $("#species-menu").toggleClass("hidden");
+    if (!$("#sightings-menu").hasClass("hidden")) {
+      $("#sightings-menu").addClass("hidden");
+    }
+    if (!$("#regions-menu").hasClass("hidden")) {
+      $("#regions-menu").addClass("hidden");
+    }
+  }
+  function toggleSightingsHidden() {
+    $("#sightings-menu").toggleClass("hidden");
+    if (!$("#species-menu").hasClass("hidden")) {
+      $("#species-menu").addClass("hidden");
+    }
+    if (!$("#regions-menu").hasClass("hidden")) {
+      $("#regions-menu").addClass("hidden");
+    }
+  }
+  function toggleRegionsHidden() {
+    $("#regions-menu").toggleClass("hidden");
+    if (!$("#species-menu").hasClass("hidden")) {
+      $("#species-menu").addClass("hidden");
+    }
+    if (!$("#sightings-menu").hasClass("hidden")) {
+      $("#sightings-menu").addClass("hidden");
+    }
+  }
+</script>
+
+<!-- <script src="javascripts/welcome.js"></script> -->
+
+<% content_for :head do %>
+  <script src="javascripts/welcome.js"></script>
+<% end %>

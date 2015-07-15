@@ -1,0 +1,10 @@
+<h2>Species: <%= @species.name %></h2>
+
+<p><a href="/tasks/<%= @species.id %>/edit">Edit</a>
+  <a href="/tasks/<%= @species.id %>"
+    data-confirm="You sure?"
+    data-method="delete"
+    rel="nofollow">Delete</a>
+</p>
+<p><a href="/species">Return to species listing</a></p>
+<p><a href="/">Home</a></p>

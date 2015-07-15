@@ -1,0 +1,16 @@
+<h2>Species</h2></br>
+
+<ul>
+  <% @species.each do |s| %>
+    <li>
+    <form action="/species/<%= s.id %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <a href="/species/<%= s.id %>"><%= s.name %></a>
+    </form>
+    </li>
+  <% end %>
+  <br />
+</ul>
+
+<p><%= link_to "Add", "species/new" %></p>
+<p><a href="/">Home</a></p>
